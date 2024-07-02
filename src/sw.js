@@ -3,13 +3,13 @@ import { initializeApp } from "firebase/app";
 import { getMessaging, getToken } from "firebase/messaging";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDjmX54F7UvteEgKUZdbs6C-i4TcU70NJc",
-  authDomain: "deneme-b0c35.firebaseapp.com",
-  projectId: "deneme-b0c35",
-  storageBucket: "deneme-b0c35.appspot.com",
-  messagingSenderId: "25983727680",
-  appId: "1:25983727680:web:e81e12f7864d0a8c1b07a5",
-  measurementId: "G-271XBW2788",
+  apiKey: "your-api-key",
+  authDomain: "your_project.firebaseapp.com",
+  projectId: "your_project",
+  storageBucket: "your_project.appspot.com",
+  messagingSenderId: "sender-id",
+  appId: "your-app-id",
+  measurementId: "measurement-id",
 };
 
 function handleError(err) {
@@ -20,14 +20,14 @@ function requestNotification() {
   if (!("Notification" in window)) {
     alert("This browser does not support desktop notifications");
   } else if (Notification.permission === "granted") {
-    const notification = new Notification("Ekşi Sözlük");
+    const notification = new Notification("Test Push Notification");
     console.log("Notification permission granted.");
     const app = initializeApp(firebaseConfig);
 
     const messaging = getMessaging(app);
     getToken(messaging, {
       vapidKey:
-        "BDlJbCXlzPxBWPUwRAHx2Ixk6opNP9FJ-0ybumnF47LDGdSOMc89NIcUPKO8JRLwyZ-Qrhf49TtEw8k22o-5Mow",
+        "your-vapid key",
     }).then((currentToken) => {
       if (currentToken) {
         console.log("currentToken: ", currentToken);
