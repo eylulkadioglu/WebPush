@@ -97,3 +97,5 @@ This project was developed during my internship at **Ekşi Teknoloji**, and is p
 ## 📄 License
 
 This project is for educational and demonstration use only. No production credentials or private information from Ekşi Sözlük are included.
+
+This project is licensed under the [MIT License](./LICENSE).
