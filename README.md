@@ -51,17 +51,16 @@ This project is a web-based push notification system built during my internship 
 - A Firebase account with a project and VAPID key
 
 ### 🛠 Installation
-
 ```bash
 git clone https://github.com/eylulkadioglu/WebPush.git
 cd WebPush
 npm install
+```
 
----
 ### 🧪 Local Development
-
 ```bash
 npm start
+```
 
 Then open [http://localhost:3000](http://localhost:3000) and approve notification permission in your browser.
 
