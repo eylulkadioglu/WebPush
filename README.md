@@ -1,71 +1,100 @@
-# Web Push Notification using Google Firebase 
+# 🔔 Web Push Notification System (React + Firebase)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a web-based push notification system built during my internship at **Ekşi Teknoloji (Ekşi Sözlük)**. The system simulates how web browsers receive and display push notifications using **Firebase Cloud Messaging (FCM)**, **React.js**, and **Service Workers**.
 
-## Available Scripts
+> 🚨 This project is a safe-to-share version and does not include production credentials from Ekşi Sözlük. It uses Firebase test credentials for demonstration purposes only.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🌟 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- One-click registration for push notifications
+- Retrieval and logging of **FCM device tokens**
+- Reception of **foreground messages** (while app is open)
+- Reception of **background push notifications** via service worker
+- Clean separation of logic into React components and Firebase config
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🧠 System Architecture
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. React Frontend (`App.js`)
+- Loads a simple page and requests browser permission
+- Uses Firebase SDK to generate an FCM token
+- Listens for foreground messages and displays alerts
 
-### `npm run build`
+### 2. Firebase Messaging (`firebase.js`)
+- Initializes Firebase using modular SDK (`v9+`)
+- Exports `messaging` object for FCM functionality
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 3. Service Worker (`firebase-messaging-sw.js`)
+- Runs independently of the React app
+- Listens for background messages
+- Displays browser-level notifications using `self.registration.showNotification()`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠 Technologies Used
 
-### `npm run eject`
+- **React.js** (with Create React App)
+- **Firebase Cloud Messaging (FCM)**
+- **Firebase Modular SDK (v9+)**
+- **Service Workers**
+- **JavaScript (ES6+)**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🚀 Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 🔧 Prerequisites
+- Node.js + npm
+- A Firebase account with a project and VAPID key
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 🛠 Installation
 
-## Learn More
+```bash
+git clone https://github.com/eylulkadioglu/WebPush.git
+cd WebPush
+npm install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
+### 🧪 Local Development
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm start
 
-### Code Splitting
+Then open [http://localhost:3000](http://localhost:3000) and approve notification permission in your browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
+##### 📦 Simulating a Notification
 
-### Analyzing the Bundle Size
+1. Get the FCM token printed in your browser console.
+2. Go to **Firebase Console > Cloud Messaging**
+3. Send a new message using the **“Single device”** option and paste your token.
+4. You'll receive:
+   - An alert if the app is open (foreground)
+   - A browser notification if it’s in the background
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+###### 🧪 Learning Outcomes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Through this project, I gained experience in:
 
-### Advanced Configuration
+- Configuring and securing web-based push messaging
+- React component lifecycle and effects
+- Firebase SDK integration
+- Service worker registration and lifecycle
+- Managing public-safe credentials and structuring demos for GitHub
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 📄 Internship Context
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This project was developed during my internship at **Ekşi Teknoloji**, and is part of a broader internal tool suite involving real-time notifications. This version has been adapted for public sharing and technical demonstration.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# WebPush
+## 📄 License
+
+This project is for educational and demonstration use only. No production credentials or private information from Ekşi Sözlük are included.

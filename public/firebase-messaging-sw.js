@@ -1,30 +1,27 @@
-// Scripts for firebase and firebase messaging
-importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js");
+importScripts('https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/10.11.0/firebase-messaging-compat.js');
 
-// Initialize the Firebase app in the service worker by passing the generated config
-const firebaseConfig = {
-  apiKey: "AIzaSyDjmX54F7UvteEgKUZdbs6C-i4TcU70NJc",
-  authDomain: "deneme-b0c35.firebaseapp.com",
-  projectId: "deneme-b0c35",
-  storageBucket: "deneme-b0c35.appspot.com",
-  messagingSenderId: "25983727680",
-  appId: "1:25983727680:web:e81e12f7864d0a8c1b07a5",
-  measurementId: "G-271XBW2788",
-};
+firebase.initializeApp({
+  apiKey: "AIzaSyD0Ysoet-W4RF98oyVqi9RIvRYGHJPtF8I",
+  authDomain: "webpush-demo-a14eb.firebaseapp.com",
+  projectId: "webpush-demo-a14eb",
+  storageBucket: "webpush-demo-a14eb.firebasestorage.app",
+  messagingSenderId: "318646882088",
+  appId: "1:318646882088:web:2db615b89e50af5d6c8a1d",
+  measurementId: "G-YRQWM91HY1"
+});
 
-firebase.initializeApp(firebaseConfig);
-
-// Retrieve firebase messaging
+// Retrieve Firebase Messaging object
 const messaging = firebase.messaging();
 
+// Handle background push notifications
 messaging.onBackgroundMessage(function(payload) {
-  console.log("Received background message ", payload);
+  console.log('📦 Received background message: ', payload);
 
-  const notificationTitle = payload.notification.title;
-  const notificationOptions = {
-    body: payload.notification.body,
-  };
+  const { title, body, icon } = payload.notification;
 
-  self.registration.showNotification(notificationTitle, notificationOptions);
+  self.registration.showNotification(title, {
+    body,
+    icon: icon || '/logo192.png' // fallback icon if none provided
+  });
 });
